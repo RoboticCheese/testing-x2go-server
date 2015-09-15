@@ -1,0 +1,37 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+  # TODO: - name: ubuntu-12.04
+  # TODO: - name: centos-7.1
+  # TODO: - name: centos-6.7
+  # TODO: - name: centos-5.11
+  - name: ubuntu-14.04-chef-11
+    driver:
+      box: bento/ubuntu-14.04
+    provisioner:
+      require_chef_omnibus: 11.16.4
+  # TODO: - name: ubuntu-12.04-chef-11
+  # TODO: - name: centos-7.1-chef-11
+  # TODO: - name: centos-6.7-chef-11
+  # TODO: - name: centos-5.11-chef-11
+  - name: localhost
+    driver:
+      name: localhost
+
+suites:
+  - name: default
+    run_list:
+      - recipe[x2go-server]
+    excludes:
+      - localhost
+  - name: uninstall
+    run_list:
+      - recipe[x2go-server_test::uninstall]
+    excludes:
+      - localhost

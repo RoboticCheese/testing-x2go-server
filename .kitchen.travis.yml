@@ -1,0 +1,22 @@
+---
+driver:
+  name: docker
+
+suites:
+  - name: a-default
+    run_list:
+      - recipe[x2go-server]
+    excludes:
+      - ubuntu-14.04
+      - ubuntu-14.04-chef-11
+  - name: a-uninstall
+    run_list:
+      - recipe[x2go-server_test::uninstall]
+    excludes:
+      - ubuntu-14.04
+      - ubuntu-14.04-chef-11
+  - name: default
+    run_list:
+      - recipe[x2go-server]
+    excludes:
+      - localhost
