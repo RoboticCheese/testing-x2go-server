@@ -8,5 +8,7 @@ dependencies:
     - chef exec bundle install
 
 test:
+  pre:
+    - cp .kitchen.circle.yml .kitchen.local.yml
   override:
-    - chef exec kitchen verify || ps -Af
+    - chef exec kitchen test
