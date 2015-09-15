@@ -15,6 +15,9 @@ describe 'x2go-server::service' do
 
   describe process('x2gocleansessions') do
     it 'is running' do
+      puts 'PROCESSES IN THIS CONTAINER'
+      puts %x{ps -Af}
+      puts '/PROCESSES IN THIS CONTAINER'
       expect(subject).to be_running
     end
   end
