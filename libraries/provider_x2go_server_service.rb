@@ -52,7 +52,7 @@ class Chef
       Resource::X2goServerService.new('_', nil).allowed_actions.each do |a|
         define_method("action_#{a}") do
           service(new_resource.service_name) do
-            status_command 'ps h -C x2gocleansessions'
+            status_command 'whoami && ps h -C x2gocleansessions'
             action a
           end
         end
