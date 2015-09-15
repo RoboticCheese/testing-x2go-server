@@ -20,18 +20,11 @@ platforms:
   # TODO: - name: centos-7.1-chef-11
   # TODO: - name: centos-6.7-chef-11
   # TODO: - name: centos-5.11-chef-11
-  - name: localhost
-    driver:
-      name: localhost
 
 suites:
   - name: default
     run_list:
       - recipe[x2go-server]
-    excludes:
-      - localhost
   - name: uninstall
     run_list:
       - recipe[x2go-server_test::uninstall]
-    excludes:
-      - localhost
